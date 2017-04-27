@@ -5,13 +5,13 @@
 Socio-economic Inequalities in Accession to Real Estate Market
 }
 
-\author{Thibault Le Corre\affilnum{1} and Juste Raimbault\affilnum{1}\affilnum{2}}
+\author{Thibault Le Corre\affilnum{1} and Juste Raimbault\affilnum{1},\affilnum{2}}
 
-\affiliation{\affilnum{1}UMR CNRS 8504 Géographie-cités\\
+\affiliation{\affilnum{1}UMR CNRS 8504 Geographie-cites\\
 \affilnum{2}UMR-T 9403 IFSTTAR LVMT}
 
 \corrauth{Thibault Le Corre,
-UMR CNRS 8504 Géographie-cités,
+UMR CNRS 8504 Geographie-cites,
 13 rue du Four, 
 75006 Paris, FR.}
 
@@ -30,9 +30,23 @@ We study socio-economic drivers of accession to property in Real Estate Market, 
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
 
+In most capitalist advanced countries, housing prices increases faster than households incomes. In some of them, more exposed with toxic financial assets, 2007's subprimes crisis lead to a momentary burst, but in others the bubble stayed ``robust''~\cite{timbeau2013bulles}.Starting from the bubble explanation and haunted by the notion of equilibrium, hortodox eonomists see in inflation an existing unbalanced stock between housing supply and households demand. In that terms macro-prices dynamics can not be understood by their models and finally put the emphasises on the unresponsability of individuals households, adopting a speculative behaviour similar to financial stakeholders. As if housing was an asset like the others and we would buy one only for the exchange value.
+More recently, litterature on political economy of housing give us the tends of the public policy of housing. In that terms it is became common to accept housing "as a pillar of the capitalist economy" (\cite{aalbers2016financialization}, page 10)
 
+-comparative studies : dette et prix
+-critique des modèles comparatifs : une vision parfois romantique qui ommet les tendances générales : privatisation du stock + libéralisation des politiques de régulation du financement
+--> Le rôle du logement dans l'économie
+-Critique de la logique de la formation des prix par des "acteurs de la promotion" + le remplacement social (vision écologiste)
+Often, marxist literature investigating on housing rising prices put the emphasises on the role of real estate developers. One of the most famous theory has been developed by Neil Smith through the concept of rent-gap model. We do not assume that this model is unefficient but it seems that it can not explain the contemporain prices formation in entire metropolitan urban regions for one major reason. The housing market is not feed by new constructions but by the circulation of used housing. Moreover, research on real estate developpers have shown their spatial diversification after the inflation. In that sense they are attentive to the "markets signals" more than market markers. However we do accept the analytical concept of devaluation. But in our perspective until nowadays, massive devaluation of real estate stock has been avoid thanks to the  More generally the logic 
 
+PB : Dans quelle mesure la hausse du prix immobilier est le résulat de l'évolution des conditions d'octroie du crédit immobilier? 
+les ratio LTV dans les espaces socio correpond t-ils au capital empruntable selon les conditions d'octroie? Quels sont les "régimes" immobiliers des espaces urbains? (un régime patrimonial , un régime par le crédit...)?
 
+--> Politiques de scoring : quantification du risque
+
+Since Halbwachs seminal study~\cite{halbwachs1913classe}, urban rese
+archers have tended to explain socio-economic inequality as  a  function  of  housing  affordability  (i.e.  the  price to
+income  ratio).  Few  have  explicitly  attempted  to  link socio spatial  inequality  to  the  financial  dynamics  of  residential  housing
 
 
 
@@ -46,7 +60,7 @@ When using aggregated statistical data, one often observe an aggregated distribu
 When studying geographical data, aggregation is generally done on different aspects. Spatial and temporal aggregations have been widely studied (MAUP, etc.). The aggregation over classes of a population may be problematic : for example, one can have the distribution of incomes for a population of a geographical area, but not the distributions conditioned to socio-economic classes (CSP) that are crucial for some statistical analyses. We describe here a method to reconstruct these, under the knowledge of population composition and simplifying assumptions on the shape of the conditional distributions. This problem is close to inverse problems in various fields of applied statistics, and using Gaussian mixtures is a well-known method~\cite{yu2012solving}. It can also be understood as mode finding with a fixed number of modes~\cite{carreira2000mode}.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Formalization}
 
 \paragraph{General case}
@@ -69,6 +83,7 @@ Let simplify the problem and take similar distributions for each category, such 
 \]
 
 
+%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Implementation}
 
 \textit{Implement the optimization problem in R}
@@ -88,8 +103,16 @@ with \texttt{distrib} the histogram, \texttt{weights} composition of the populat
 \end{itemize}
 
 
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Validation}
+
+\subsubsection{Sensitivity Analysis}
 
 
+
+\subsubsection{External Validation}
+
+zero rate mortgages : for a subpopulation, data we extrapolate is given (beware of selection bias) $\rightarrow$ validate on it.
 
 
 
