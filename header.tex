@@ -18,6 +18,7 @@
 %  -> use this comment to ask questions on what other wrote/answer questions with optional arguments (up to 4 answers)
 \usepackage{xparse}
 \usepackage{ifthen}
+
 \DeclareDocumentCommand{\comment}{o m o o o o}
 {\ifthenelse{\draft=1}{
   \IfValueT{#1}{
@@ -39,13 +40,21 @@
 
 
 
+
 % todo
-\newcommand{\todo}[1]{
-\ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
+%\newcommand{\todo}[1]{
+%\ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
+%}
+\DeclareDocumentCommand{\todo}{o m}{
+  \ifthenelse{\draft=1}{
+    \IfValueT{#1}{\textcolor{red!50!blue}{\textbf{TODO (#1) : \textit{#2}}}}
+    \IfNoValueT{#1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#2}}}}
+  }{}
 }
 
 
 
+\usepackage[table]{xcolor}
 
 \usepackage{moreverb,url}
 

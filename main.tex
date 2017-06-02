@@ -26,6 +26,11 @@ We study socio-economic drivers of accession to property in Real Estate Market, 
 \maketitle
 
 
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -41,6 +46,7 @@ Often, marxist literature investigating on housing rising prices put the emphasi
 
 PB : Dans quelle mesure la hausse du prix immobilier est le résulat de l'évolution des conditions d'octroie du crédit immobilier? 
 les ratio LTV dans les espaces socio correpond t-ils au capital empruntable selon les conditions d'octroie? Quels sont les "régimes" immobiliers des espaces urbains? (un régime patrimonial , un régime par le crédit...)?
+Comment peut-on mesurer la structuration sptiale des marchés immobiliers au niveau d'une région urbaine? Que détermine cette structuration en termes de régimes de marchés?
 
 --> Politiques de scoring : quantification du risque
 
@@ -48,18 +54,65 @@ Since Halbwachs seminal study~\cite{halbwachs1913classe}, urban rese
 archers have tended to explain socio-economic inequality as  a  function  of  housing  affordability  (i.e.  the  price to
 income  ratio).  Few  have  explicitly  attempted  to  link socio spatial  inequality  to  the  financial  dynamics  of  residential  housing
 
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Residential real estate studying approach}
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Prices as markets segmentation reveals}
+%%%%%%%%%%%%%%%%%%%%%%
+
+--> Mesure de l'autocorrélation spatiale des prix : une première idée des structures existantes
+
+\todo[JR]{faire un moran dans le temps et avec different spans pour voir quel niveau de non-stationarité on a, à la fois dans le temps et dans l'espace ; manière supplémentaire de justifier notre approche}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Why hedonic prices models are dangerous?}
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A socio-economic households approach}
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodological implication and data}
+%%%%%%%%%%%%%%%%%%%%%%
 
 
+\textbf{Objectives : }
+\begin{enumerate}
+\item Obtain a spatio-temporal typology of local markets, by linking transactions properties with local structural socio-economic properties
+\item Link it with capital and debts characteristic, as an external validation and application of the typology 
+\end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Data}
 %%%%%%%%%%%%%%%%%%%%%%
 
-%\comment[JR]{Description of various datasets, variables, granularity, time span etc.}
-
-%\todo{From patrimoine : distribution of income by CSP and geographical area.}
+\textit{Description of various datasets, variables, granularity, time span etc.}
 
 
+We use the following datasets : 
+\begin{itemize}
+\item BIEN Database : spatialized real estate transactions, includes some socio-economic information on buyer, granularity : IRIS
+\item Census : economic structure (median income by CSP) to be extrapolated
+\item Patrimoine database : non-spatialized individual informations such as private capital, debts
+\item Zero-rate Loans
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{General Methodology}
+%%%%%%%%%%%%%%%%%%%%%%
+
+To pursue our research objectives, we apply an iterative methodology with the following steps :
+\begin{enumerate}
+\item Extrapolate (through reverse kernel extrapolation) the socio-economic structure at the iris level
+\item Using unsupervised data-mining, establish spatio-temporal typologies using (i) real estate transactions alone ; (ii) socio-economic structure alone ; (iii) coupled real estate transactions and socio-economic structure. At this stage different techniques have to be tested, for example for the role of space by using GWR to extract an optimal spatial scale. Testing the influence of second order relations (correlations) on the typologies is also an option.
+\item Using the patrimoine database, establish a relation (with regressions e.g.) between explicative variables present in BIEN, PTZ and Patrimoine database (and that are comparable) and explicated variables present in patrimoine only. To be spatially applicable, the conditioning on explicative variable must be sufficient to a certain level to explain spatial variations (local markets) - this point could be checked on BIEN only using GWR. The regressed functions can then be used to extrapolate explicated variable spatially, and better understand the nature of local markets and in a way externally validate the typology.
+\end{enumerate}
 
 
 
@@ -71,11 +124,17 @@ income  ratio).  Few  have  explicitly  attempted  to  link socio spatial  inequ
 
 When using aggregated statistical data, one often observe an aggregated distribution over a classification. We propose a desaggregation method under the assumption of a kernel mixture.
 
+\cite{pivano2016desagreg} : recent phd thesis aiming at desagregating mobility data
+
+
 When studying geographical data, aggregation is generally done on different aspects. Spatial and temporal aggregations have been widely studied (MAUP, etc.). The aggregation over classes of a population may be problematic : for example, one can have the distribution of incomes for a population of a geographical area, but not the distributions conditioned to socio-economic classes (CSP) that are crucial for some statistical analyses. We describe here a method to reconstruct these, under the knowledge of population composition and simplifying assumptions on the shape of the conditional distributions. This problem is close to inverse problems in various fields of applied statistics, and using Gaussian mixtures is a well-known method~\cite{yu2012solving}. It can also be understood as mode finding with a fixed number of modes~\cite{carreira2000mode}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Formalization}
+
+% put the formalization in appendix, describe with words here.
+
 
 \paragraph{General case}
 
@@ -135,7 +194,7 @@ zero rate mortgages : for a subpopulation, data we extrapolate is given (beware 
 %%%%%%%%%%%%%%%%%%%%%%
 
 
-\paragraph{Context}
+\subsection{Context}
 
 Theoretical considerations and literature review suggest that housing market is segmented into at least three distinct categories, that should furthermore correspond to clearly identified spatial entities. The so-called Market Regimes are :
 
@@ -146,7 +205,7 @@ Theoretical considerations and literature review suggest that housing market is 
 \end{itemize}
 
 
-\paragraph{Methodology}
+\subsection{Methodology}
 
 
 The aim is to identify spatial regimes. These should answer differently to perturbations as the 2008 crisis, what is a mean of external validation.
@@ -160,8 +219,19 @@ The geographical provenance of buyers should also contain some signal, as capita
 
 Using GWR to extract an optimal spatial scale is also a possibility.
 
+\paragraph{Technique used}
+
+\todo{check the correlation structure / effective dimension of data, to see if standard clustering is enough or if we need to do some Random Forest Classification.}
 
 
+\subsection{Classification}
+
+\textit{classification in itself}
+
+
+\subsection{Sensitivity Analysis}
+
+\todo{do a minimal sensitivity analysis of classification to errors in extrapolated data, to see if the error in the previous stage can have a strong influence (it shouldn't, even locally if we use appropriate spatial operators before classifying) ; think of an indicator/a way to give an upper bound on this uncertainty ?}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
